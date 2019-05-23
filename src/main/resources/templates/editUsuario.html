@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/usuarioActualizar" method="POST">
+    <input type="hidden" name="id" th:value="${usu.id}">
+    <b>Nombre: </b>
+    <input type="text" name="nombre" th:value="${usu.nombre}">
+    <b>Fecha: </b>
+    <input type="date" name="fecha" th:value="${usu.fecnac}">
+    <input type="submit" name="actualizarUsuario"/>
+</form>
+</body>

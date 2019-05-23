@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Lista de Municipios</h1>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>NombreMunicipio</td>
+        <td>FechadeFundacion</td>
+    </tr>
+
+    <tr th:each="listamunicipios: ${listamunicipios}">
+        <td th:text="${listamunicipios.idMunicipio}"></td>
+        <td th:text="${listamunicipios.nombre}"></td>
+        <td th:text="${listamunicipios.fecha}"></td>
+        <td>
+            <a th:href="@{/municipiosh/}+${listamunicipios.idMunicipio}">detalle</a>
+            <a th:href="@{/editmunicipio/}+${listamunicipios.idMunicipio}">editar</a>
+            <a th:href="@{/elimMun/}+${listamunicipios.idMunicipio}">eliminar</a>
+        </td>
+    </tr>
+
+
+
+</table>
+</body>
+</html></html>
