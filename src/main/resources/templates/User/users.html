@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8">
+    <title>Sisinfo</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
-<body>
-$END$
+
+<body class="p-3 mb-2 bg-dark text-black">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/init">INDEX <span class="sr-only">(current)</span></a>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container col-md-9">
+        <div class="card">
+            <div class="card-header">
+                <h3>USUARIOS</h3>
+
+            </div>
+            <div class="card-header">
+
+                <div class="form-row text-black">
+
+                    <div class="form-group col-md-3">
+                        <h3>DATOS</h3>
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <h3>FOTO</h3>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <h3>DETALLES</h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+
+                    <tbody>
+                        <tr th:each="listar: ${users}">
+
+
+                            <div class="form-row text-black">
+                                <div class="form-group col-md-3">
+
+                                    <p><b>ID_USUARIO :  <b th:text="${listar.idUser}"></b></b>
+                                    </p>
+                                    <p><b>NOMBRE :  <b th:text="${listar.nombre}"></b></b>
+                                    </p>
+                                    <p><b>APELLIDO :  <b th:text="${listar.apellido}"></b></b>
+                                    </p>
+                                    <p><b>USERNAME :  <b th:text="${listar.username}"></b></b>
+                                    </p>
+                                    <p><b>EMAIL :  <b th:text="${listar.Email}"></b></b>
+                                    </p>
+
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <figure>
+                                        <img th:src="${listar.fotoUsuario}" alt="" width="200px" height="200px">
+                                    </figure>
+
+                                </div>
+                                <div class="form-group">
+                                    <p>
+                                        <a class="btn btn-warning" href="/">EDITAR</a>
+                                        <a class="btn btn-danger" href="">ELIMINAR</a>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
 </body>
+<style>
+    figure {
+        width: 205px;
+        height: 205px;
+    }
+    
+    img {
+        border: 5px solid black;
+        width: 205px;
+        height: 205px;
+    }
+</style>
+
 </html>

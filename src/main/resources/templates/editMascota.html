@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8">
+    <title>Sisinfo</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
-<body>
-$END$
+
+<body class="p-3 mb-2 bg-dark text-black">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/init">INDEX <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="mascota/new">NEW MASCOTA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mascotas">LISTAR MASCOTA</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+    <div class="container col-md-7">
+        <h1><a class="btn btn-info" href="/init" role="button">INDEX </a></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>EDITAR</h3>
+
+            </div>
+            <div class="card-body">
+                <form action="/MascotaActualizar" method="POST">
+                    <input type="hidden" name="idMascota" th:value="${mascota.idMascota}">
+                    <div class="form-group">
+
+                        <label>NOMBRE:</label>
+                        <input type="text" name="nombreMascota" class="form-control" th:value="${mascota.nombreMascota}">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>edad_Mascota:</label>
+                        <input type="text" name="edadMascota" class="form-control" th:value="${mascota.edadMascota}">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>Especie_Mascota:</label>
+                        <input type="text" name="especie" class="form-control" th:value="${mascota.especie}">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label th:text="Propietario"></label><br/>
+                        <select th:field="*{mascota.propietario}" th:value="${mascota.propietario.nombre}">
+                        <option th:each="prop :${propietarios}" th:value="${prop.id}" th:text="${prop.nombre}">
+
+                        </option>
+                    </select><br/>
+
+                    </div>
+
+
+                    <input type="submit" class="btn btn-warning" value="Guardar" />
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
 </body>
+
 </html>

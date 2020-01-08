@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-$END$
+
+<body class="p-3 mb-2 bg-dark text-black">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/init">INDEX <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="vacuna/new">NEW VACUNA</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+    <div class="container">
+        <h1><a class="btn btn-info" href="/init" role="button">INDEX </a></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Vacunas</h3>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Id_Vacuna</th>
+                            <th>Nombre_Vacuna</th>
+                            <th>enfermedad_que_cura</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="listar: ${listarVacunas}">
+                            <td th:text="${listar.idVacuna}"></td>
+                            <td th:text="${listar.nombreVacuna}"></td>
+                            <td th:text="${listar.enfermedad}"></td>
+
+                            <td>
+
+                                <a class="btn btn-warning" th:href="@{/editVacuna/}+${listar.idVacuna}">EDITAR</a>
+                                <a class="btn btn-danger" th:href="@{/elimVacuna/}+${listar.idVacuna}">ELIMINAR</a>
+
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

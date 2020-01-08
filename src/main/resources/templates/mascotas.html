@@ -1,10 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/init">INDEX <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mascota/new">NEW MASCOTA</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <meta charset="utf-8">
+    <title>Sisinfo</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
-<body>
-$END$
+
+<body class="p-3 mb-2 bg-dark text-black">
+
+    <div class="container col-md-12">
+        <div class="form-row text-white">
+            <div class="form-group col-md-6">
+                <form action="filterEspecie" method="post">
+                    <div class="form-group">
+                        <label>Especie</label>
+                        <select name="catAux" class="form-control">
+                            <option th:each="muni :${especies}" th:value="${muni}" th:text="${muni}">
+                            </option>
+                            <option th:value="Todo" th:text="Todo"/>
+                        </select><br/>
+                        <input type="submit" value="Buscar" class="btn btn-warning">
+                        <!--     <input type="text" name="catAux"> -->
+                    </div>
+                </form>
+            </div>
+            <div class="form-group col-md-6">
+                <form action="filterPropietario" method="post">
+                    <div class="form-group">
+                        <tr>
+                            <label>PROPIETARIO</label>
+                            <select name="propAux" class="form-control">
+                            <option th:each="muni :${propietarios}" th:value="${muni.id}" th:text="${muni.nombre}">
+                            </option>
+                        </select><br/>
+
+                            <input type="submit" value="Buscar" class="btn btn-warning">
+                        </tr>
+                    </div>
+                    <!--     <input type="text" name="catAux"> -->
+                </form>
+            </div>
+        </div>
+
+
+        <h1><a class="btn btn-info" href="/init" role="button">INDEX </a></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Productos</h3>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Id_Mascota</th>
+                            <th>Nombre_Mascota</th>
+                            <th>edad_Mascota</th>
+                            <th>Especie_Mascota</th>
+                            <th>Foto</th>
+                            <th>Propietario</th>
+                            <th>Vacunas</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="mascota: ${listarMascotas}">
+                            <td th:text="${mascota.idMascota}"></td>
+                            <td th:text="${mascota.nombreMascota}"></td>
+                            <td th:text="${mascota.edadMascota}"></td>
+                            <td th:text="${mascota.especie}"></td>
+                            <td>
+                                <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1044929482%2F960x0.jpg%3Ffit%3Dscale" width="50" height="50">
+                            </td>
+                            <td th:text="${mascota.propietario.nombre}"></td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th:block th:each="vac,iter: ${mascota.vacunas}">
+                                            <label th:text="${vac.nombreVacuna}"> </label>
+                                            <th:block th:if="${!iter.last}">, </th:block>
+                                        </th:block>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+
+                                <a class="btn btn-warning" th:href="@{/editMascota/}+${mascota.idMascota}">EDITAR</a>
+                                <a class="btn btn-danger" th:href="@{/elimMascota/}+${mascota.idMascota}">ELIMINAR</a>
+                                <a class="btn btn-warning" th:href="@{/mascotaVacuna/}+${mascota.idMascota}">VACUNAR</a>
+
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

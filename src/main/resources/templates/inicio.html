@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="utf-8">
+    <title>Sisinfo</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body class="p-3 mb-2 bg-dark text-white">
+    <marquee bgcolor="gray" behavior="alternate" width="100%" height="100" scrolldelay="200">
+        <marquee width="60" height="60" behavior="alternate" direction="right" loop="0" scrolldelay="200">
+            <img src="https://www.stickpng.com/assets/thumbs/585965314f6ae202fedf2863.png" width="50" height="50" alt="Tutorials">
+        </marquee>
+        <marquee width="60" height="60" behavior="alternate" direction="down" loop="0" scrolldelay="200">
+            <img src="https://www.stickpng.com/assets/thumbs/585965314f6ae202fedf2863.png" width="50" height="50" alt="Tutorials">
+        </marquee>
+        <marquee width="60" height="60" behavior="alternate" direction="left" loop="0" scrolldelay="200">
+            <img src="https://www.stickpng.com/assets/thumbs/585965314f6ae202fedf2863.png" width="50" height="50" alt="Tutorials">
+        </marquee>
+        <marquee width="60" height="60" behavior="alternate" direction="up" loop="0" scrolldelay="200">
+            <img src="https://www.stickpng.com/assets/thumbs/585965314f6ae202fedf2863.png" width="50" height="50" alt="Tutorials">
+        </marquee>
+
+    </marquee>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger" href="propietario/new">NEW PROPIETARIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark" href="mascota/new">NEW MASCOTA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark" href="vacuna/new">NEW VACUNA</a>
+
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark" href="producto/new">NEW PRODUCTO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark" href="vacunas">LISTAR VACUNA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark" href="propietarios">LISTAR PROPIETARIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark" href="mascotas">LISTAR MASCOTA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark" href="productos">LISTAR PRODUCTOS</a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1 class="container">Pagina principal</h1>
+
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Cerrar Sesion" />
+        </form>
+        <h1><a th:href="@{/admin}"> admin</a> | <a th:href="@{/user}"> user</a></h1>
+
+        <div>
+
+
+
+        </div>
+
+    </div>
+    <img src="https://png.pngtree.com/png-clipart/20190509/ourlarge/pngtree-husky-in-bells-png-image_915885.jpg" alt="">
+    <img src="descarga.jpg" width="1000" th:src="@{descarga.jpg}" />
+    <img src="https://www.stickpng.com/assets/thumbs/585965314f6ae202fedf2863.png" width="200" height="240" alt="">
+
+    <img src="http://files.alfresco.mjh.group/alfresco_images/DVM360//2019/07/15/5e8a4cb0-a03a-4187-9a2e-efd038da3f12/veterinary-dog-with-broccoli_leadership-challenge-colors-AdobeStock_240305272-450.jpg" alt="">
 </body>
+<style>
+    .nav-item {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+</style>
+
 </html>
