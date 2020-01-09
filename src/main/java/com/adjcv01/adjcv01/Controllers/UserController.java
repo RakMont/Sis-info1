@@ -56,7 +56,7 @@ public class UserController {
         p.setAuthority(au2);
         p.setRol("USER");
         userRepository.save(p);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)

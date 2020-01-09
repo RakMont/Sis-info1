@@ -47,19 +47,19 @@
                     <div class="form-group">
 
                         <label>NOMBRE:</label>
-                        <input type="text" name="nombreMascota" class="form-control" th:value="${mascota.nombreMascota}">
+                        <input type="text" name="nombreMascota" class="form-control" th:value="${mascota.nombreMascota}" required>
 
                     </div>
                     <div class="form-group">
 
                         <label>edad_Mascota:</label>
-                        <input type="text" name="edadMascota" class="form-control" th:value="${mascota.edadMascota}">
+                        <input type="number" min="0" name="edadMascota" class="form-control" th:value="${mascota.edadMascota}" required>
 
                     </div>
                     <div class="form-group">
 
                         <label>Especie_Mascota:</label>
-                        <input type="text" name="especie" class="form-control" th:value="${mascota.especie}">
+                        <input type="text" name="especie" class="form-control" th:value="${mascota.especie}" required>
 
                     </div>
 

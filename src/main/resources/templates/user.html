@@ -19,24 +19,88 @@
                 <a class="nav-link" href="/menu">INDEX <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-dark" href="productos">LISTAR PRODUCTOS</a>
+                <a class="nav-link btn btn-warning" href="productos_user">LISTAR PRODUCTOS</a>
             </li>
         </ul>
     </div>
+    <form th:action="@{/logout}" method="post" align="right">
+        <input type="submit" value="Cerrar Sesion"  class="btn btn-warning"/>
+    </form>
 </nav>
-</body>
-<h1>User Yeah!</h1>
-
-<figure class="figu">
-    <h1>Hello to mi image</h1>
-</figure>
-<div class="container">
-    <div class="col-12 user-img">
-        <img src="static/img/user.png" th:src="@{/img/user.png}"/>
-        <img src="static/img/background.jpg" th:src="@{/img/background.jpg}"/>
-
-    </div>
-
+<div class="col-12 user-img">
+    <img src="static/img/tumblr_static_72z2i2q9ym80ws84ooswwccog.gif" th:src="@{/img/tumblr_static_72z2i2q9ym80ws84ooswwccog.gif}" position="relative" height="100%" width="100%"/>
 
 </div>
+<div class="container">
+
+<section class="home_banner_area" align="center">
+    <div class="container box_1620">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="banner_content">
+                <div class="media">
+                    <div class="d-flex">
+                        <img src="static/img/user.png" th:src="@{/img/user.png}"/>
+                    </div>
+                    <div class="media-body">
+                        <div class="personal_text">
+                            <h1>HOLA BIENVENID@</h1>
+                            <h1 th:text="${user.nombre}"></h1>
+
+
+                            <ul class="list basic_info">
+                                <h1>INFORMACION BASICA</h1>
+                                <li th:text="${user.nombre} +${user.apellido}"></li>
+                                <li th:text="${user.apellido}"></li>
+                                <li th:text="${user.Email}"></li>
+                                <li th:text="${user.username}"></li>
+
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+</body>
+
+
+
+
+<style>
+    body {
+    line-height: 26px;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    color: #777777;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    top: 150px;
+    bottom : 100px
+}
+.home_banner_area .box_1620 {
+    min-height: 600px;
+    border-radius: 12px;
+    position: absolute;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0px 20px 80px 0px rgba(153, 153, 153, 0.3);
+}
+@media (max-width: 1199px)
+.home_banner_area .box_1620 {
+    bottom: -130px;
+}
+</style>
 </html>

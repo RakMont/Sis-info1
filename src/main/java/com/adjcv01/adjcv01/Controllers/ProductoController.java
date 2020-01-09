@@ -56,7 +56,13 @@ import java.util.Optional;
             modelo.addAttribute("productos",productoRepository.findAll());
             return("Producto/productos");
         }
+        @RequestMapping(value="/productos_user", method = RequestMethod.GET)
+        public String productos_user(Model modelo){
+            Iterable<Producto> productos = productoRepository.findAll();
 
+            modelo.addAttribute("productos",productoRepository.findAll());
+            return("Producto/productos_user");
+        }
 
 /*
     @RequestMapping(value="/detalle/{id}", method = RequestMethod.GET)

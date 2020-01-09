@@ -43,7 +43,7 @@ public class AppController {
 
             aux="inicio";
         }
-       // modelo.addAttribute("user",user);
+        modelo.addAttribute("user",userLooged);
         return aux;
     }
 
